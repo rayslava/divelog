@@ -1,0 +1,73 @@
+% Based on http://texblog.org/2015/07/22/diy-scuba-diving-log-book/
+% License: Creative Commons CC BY 4.0
+\documentclass[a5paper,14pt]{extarticle}
+\usepackage{fouriernc,parskip}
+\usepackage{forloop}
+\usepackage{tikz}
+\usepackage[margin=3mm,left=1.5cm,portrait]{geometry}
+\usepackage{pgfpages}
+\usepackage{textcomp}
+\linespread{2}
+\pgfpagesuselayout{2 on 1}[a4paper,landscape,border shrink=5mm]
+\begin{document}
+
+\newcounter{counter}
+\forloop{counter}{0}{\value{counter} < 2}{
+  \thispagestyle{empty}
+
+  \noindent
+  \vspace{-1em}
+  \begin{minipage}{0.6\linewidth}
+    \noindent
+    \centering
+    Dive \# \hrulefill~App \#\hrulefill\\
+    Date \hrulefill~Time \hrulefill\\
+    Location \hrulefill\\
+    Dive site \hrulefill
+  \end{minipage}
+  \qquad
+  \begin{minipage}{0.4\linewidth}
+    \hspace{-1.7em}
+    \fbox{\parbox[c][9.7em][c]{9.7em}{\hspace{9.7em}}}\\
+    {\scriptsize Stamp}
+  \end{minipage}
+  \vspace{-2em}
+  \noindent
+  \begin{minipage}{0.58\linewidth}
+    \vspace{1.2em}
+    \begin{tikzpicture}
+      \draw[thick] (0,0) -- (2.5,0) -- (1.5,-3) -- (4.5,-3) -- (5.5,0) -- (7.5,0);
+      \node [text width=.5em, align=center] (time) at (.3,-1.5) {\baselineskip=24pt Max\\depth\vspace{1em}\\\rule{2.5em}{0.8pt}\par};
+      \node [text width=1em, align=right] (entry) at (.2,.5) {\baselineskip=24pt $\searrow$~bar:\par};
+      \node [text width=.5em, align=center] (entry) at (5,.5) {\baselineskip=24pt $\nearrow$~bar:\par};
+      \node [align=center] (depth) at (3.8,-4.1) {Bottom \rule{2.5em}{0.5pt}\ min\hspace{1em}Surf. \rule{2.5em}{0.5pt}\ hrs};
+      \node [text width=3em, align=center] (stop) at (6.5,-1.5) {\baselineskip=24pt Safety\\stop\vspace{1em}\\\rule{3em}{0.8pt}\par};
+      \node [align=center] (stop3) at (4.6,-0.9) {3m};
+      \node [align=center] (stop3) at (4.2,-2.1) {6m};
+    \end{tikzpicture}
+  \end{minipage}
+  \quad
+  \begin{minipage}{0.38\linewidth}
+    \vspace{1em}
+    \noindent
+    \centering
+    Weights \hrulefill\ kg\\
+    $\square$ Long $\square$ Short $\square$ Dry \\
+    \phantom{}\hrulefill\ mm~Mix:\hrulefill \%\\
+    T, \textdegree C \hrulefill Vis: \hrulefill\\
+    Current \hrulefill\\
+  \end{minipage}
+
+  \vspace{4em}
+  \noindent
+  \phantom{}\hrulefill\\
+  \phantom{}\hrulefill\\
+  \phantom{}\hrulefill\\
+  \phantom{}\hrulefill\\
+  \phantom{}\hrulefill\\
+  \phantom{}\hrulefill\\
+  $\square$ Instructor \# \hrulefill\ $\square$ Dive master $\square$ Buddy\\
+  Name \hrulefill\ Sign \hrulefill
+  \clearpage
+}
+\end{document}
