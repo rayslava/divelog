@@ -1,0 +1,25 @@
+on: push
+
+name: CI Build
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    container:
+      image: texlive/texlive:latest    
+
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Build pdf
+        run: make
+
+      - name: Archive build
+        uses: actions/upload-artifact@v2
+        with:
+          name: divelog.pdf
+          path: divelog.pdf
