@@ -1,0 +1,12 @@
+#+TITLE: Dive log page
+#+AUTHOR: Slava Barinov
+#+EMAIL: rayslava@gmail.com
+* Why
+I just want my dive log to be filled with the data I want to keep there, so
+instead of purchasing a ready-to-use logbook I designed my own log page.
+* Thanks
+- Thanks to Tom with his original design from 2015:
+  http://texblog.org/2015/07/22/diy-scuba-diving-log-book/
+- Thanks to Dmitry Tsypchenko for his ideas from https://chozen.ru/?page_id=440
+* License
+The page is distributed under CC BY 4.0 license
