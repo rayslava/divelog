@@ -7,17 +7,24 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: texlive/texlive:latest    
+      image: texlive/texlive:latest
 
     steps:
       - name: Checkout repository and submodules
         uses: actions/checkout@v4
 
       - name: Build pdf
-        run: make
+        run: make publish
 
       - name: Archive build
         uses: actions/upload-artifact@v3
         with:
           name: divelog.pdf
           path: divelog.pdf
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: publish
+          publish_branch: gh-pages

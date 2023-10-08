@@ -1,6 +1,9 @@
 #+TITLE: Dive log page
 #+AUTHOR: Slava Barinov
 #+EMAIL: rayslava@gmail.com
+* What
+Just a dive log page ready for printing:
+https://rayslava.github.io/divelog/divelog.pdf
 * Why
 I just want my dive log to be filled with the data I want to keep there, so
 instead of purchasing a ready-to-use logbook I designed my own log page.
