@@ -7,6 +7,11 @@ https://rayslava.github.io/divelog/divelog.pdf
 * Why
 I just want my dive log to be filled with the data I want to keep there, so
 instead of purchasing a ready-to-use logbook I designed my own log page.
+* Printing
+- A4 paper
+- Short side binding
+- No scale, print original size
+- Recommended paper weight: 120-140 g/m2
 * Thanks
 - Thanks to Tom with his original design from 2015:
   http://texblog.org/2015/07/22/diy-scuba-diving-log-book/

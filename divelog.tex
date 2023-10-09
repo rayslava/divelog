@@ -4,12 +4,17 @@
 % Based on original dive log page from http://texblog.org/2015/07/22/diy-scuba-diving-log-book/
 %
 % Template: two-sided A5 page for printing on A4 paper
+% Printing:
+%  - A4
+%  - Short side binding
+%  - No scale, print original size
+% Recommended paper: 120 - 140 g/m2
 
 \documentclass[a5paper,14pt]{extarticle}
 \usepackage{fouriernc,parskip}
 \usepackage{forloop}
 \usepackage{tikz}
-\usepackage[margin=3mm,left=-1.3cm, right=1.8cm,portrait]{geometry}
+\usepackage[margin=3mm,left=-1.7cm, right=1.8cm,portrait]{geometry}
 \usepackage{pgfpages}
 \usepackage{textcomp}
 \usepackage{xcolor}
@@ -17,13 +22,14 @@
 \usepackage[pages=some]{background}
 
 % Set up grid for perfect measurements
-% \usepackage[grid, gridunit=mm, gridcolor=blue!30, subgridcolor=blue!15]{eso-pic}
+% \usepackage[grid, gridunit=mm, gridcolor=blue!10, subgridcolor=blue!15]{eso-pic}
 
 \pgfpagesuselayout{2 on 1}[a4paper,landscape,border shrink=5mm]
 
 \usepackage[most]{tcolorbox}
 \usepackage{afterpage}
 \usetikzlibrary{positioning}
+\usetikzlibrary{calc}
 
 \tcbset{
   frame code={}
@@ -54,17 +60,21 @@
   }%
 }
 
-
 % Shaded color for captions
 \definecolor{grayedcaption}{gray}{.5}
 \definecolor{boundbox}{gray}{.4}
 \definecolor{dashbox}{gray}{.6}
 
 \begin{document}
-\newgeometry{margin=3mm,left=1.5cm}
+\newgeometry{margin=3mm,left=.8cm}
 \newcounter{counter}
 \forloop{counter}{0}{\value{counter} < 2}{
   \thispagestyle{empty}
+  \begin{tikzpicture}[overlay, thin]
+    \draw [draw=dashbox,dashed]  ($(current page.south west) + (-.8cm,-0.1cm)$) circle (2mm) node {};
+    \draw [draw=dashbox,dashed]  ($(current page.south west) + (-.8cm,-7.6cm)$) circle (2mm) node {};
+    \draw [draw=dashbox,dashed]  ($(current page.south west) + (-.8cm,-15.1cm)$) circle (2mm) node {};
+  \end{tikzpicture}
   \BgThispage
   \noindent
   \vspace{-1em}
@@ -101,8 +111,8 @@
     \noindent
     \centering
     $\square$ Long $\square$ Short $\square$ Dry \\
-    \phantom{}\hrulefill\ mm~EAN\hrulefill \%\\
-    Weights \hrulefill\ kg\\
+    \phantom{}\hrulefill\ mm~EAN\hrulefill\\
+    Weights \hrulefill\\
     {\Large \usym{1F321}}\textdegree C \hrulefill Vis: \hrulefill\\
     TABT \hrulefill~\textbf{:}~\hrulefill\\
   \end{minipage}
