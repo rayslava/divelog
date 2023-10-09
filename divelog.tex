@@ -5,10 +5,10 @@
 %
 % Template: two-sided A5 page for printing on A4 paper
 % Printing:
-%  - A4
-%  - Short side binding
-%  - No scale, print original size
-% Recommended paper: 120 - 140 g/m2
+% - A4
+% - Short side binding
+% - No scale, print original size
+% - Recommended paper: 120 - 140 g/m2
 
 \documentclass[a5paper,14pt]{extarticle}
 \usepackage{fouriernc,parskip}
@@ -142,7 +142,7 @@
     \pgfsetlayers{background,main,foreground}
 
     % Gas mix part
-    \node [align=left] (mix) {\textcolor{grayedcaption}{Gas mix:}};
+    \node [align=left] (mix) {\textcolor{grayedcaption}{Gas mix}};
     \node [align=left, below = of mix] (air) {$\square$~Air};
     \node [align=left, below = of air] (ean32) {$\square$~EANx32};
     \node [align=left, below = of ean32] (ean36) {$\square$~EANx36};
@@ -157,8 +157,8 @@
       (a) rectangle (b);
     \end{pgfonlayer}
 
-    % Equipment part
-    \node [align=left, right = 2em of mix] (tank) {\textcolor{grayedcaption}{Tank:}};
+    % Tank part
+    \node [align=left, right = 2em of mix] (tank) {\textcolor{grayedcaption}{Tank}};
     \node [align=left, below = of tank] (steel) {$\square$~Steel};
     \node [align=left, below = of steel] (al) {$\square$~Alum};
     \node [align=left, below = of al] (vol) {$\square$~10~$\square$~12};
@@ -186,7 +186,7 @@
     \end{pgfonlayer}
 
     % Conditions part
-    \node [align=left, right = 2em of tank] (conditions) {\textcolor{grayedcaption}{Conditions:}};
+    \node [align=left, right = 2em of tank] (conditions) {\textcolor{grayedcaption}{Conditions}};
     \node [align=left, text width = 4.9em, below = of conditions] (day) {$\square$~Day};
     \node [align=left, text width = 4.9em, below = of day] (night) {$\square$~Night};
 
@@ -227,8 +227,19 @@
       (a) rectangle (b);
     \end{pgfonlayer}
 
+    % Water entry part
+    \node [align=left, below = 1.5em of othtank,xshift=1.3em, text width=26em] (entry) {\textcolor{grayedcaption}{Entry\hspace{3em}} $\square$~Shore~$\square$~Deck~$\square$~Boat~$\square$~Zodiac};
+    \begin{pgfonlayer}{background}
+      % Compute a few helper coordinates
+      \pgfmathsetmacro{\sp}{0.15}
+      \path (entry.west |- entry.north)+(-\sp,\sp) node (a) {};
+      \path (entry.south -| entry.east)+(+\sp,-\sp) node (b) {};
+      \path[rounded corners, draw=boundbox, solid]
+      (a) rectangle (b);
+    \end{pgfonlayer}
+
     % Feeling part
-    \node [align=left, below = 1.5em of othtank, xshift=1.3em, text width=26em] (feeling) {\textcolor{grayedcaption}{Feel} $\square$~Hot~$\square$~Warm~$\square$~Ok~$\square$~Chill~$\square$~Cold~$\square$~Freezing};
+    \node [align=left, below = 1.5em of entry, text width=26em] (feeling) {\textcolor{grayedcaption}{Feel\hspace{1em}} $\square$~Hot~$\square$~Warm~$\square$~Ok~$\square$~Chill~$\square$~Cold~$\square$~Freezing};
     \begin{pgfonlayer}{background}
       % Compute a few helper coordinates
       \pgfmathsetmacro{\sp}{0.15}
@@ -238,30 +249,60 @@
       (a) rectangle (b);
     \end{pgfonlayer}
 
-    % Water entry part
-    \node [align=left, below = 1.5em of feeling, text width=26em] (entry) {\textcolor{grayedcaption}{Entry\hspace{2em}} $\square$~Shore~$\square$~Deck~$\square$~Boat~$\square$~Zodiac};
+    % Suit part
+    \node [align=left, below = 1.5em of feeling, text width=26em] (suit)
+    {\textcolor{grayedcaption}{Suit}};
+
+    \node [align=left, text width=5.6em, xshift = -10.2em, below = of suit] (long) {Long~\hrulefill};
+    \node [align=left, text width=5.6em, right = of long] (shorty) {Shorty~\hrulefill};
+    \node [align=left, text width=5.6em, right = of shorty] (gloves) {Gloves~\hrulefill};
+    \node [align=left, text width=5.6em, right = of gloves] (hood) {Hood~\hrulefill};
+
+    \node [align=left, text width = 22.4em, xshift = -23.85em, yshift=-.2em, right = of suit] (dry) {$\square$~Dry~\hrulefill};
+
     \begin{pgfonlayer}{background}
       % Compute a few helper coordinates
       \pgfmathsetmacro{\sp}{0.15}
-      \path (entry.west |- entry.north)+(-\sp,\sp) node (a) {};
-      \path (entry.south -| entry.east)+(+\sp,-\sp) node (b) {};
+      \path (suit.west |- suit.north)+(-\sp,\sp) node (a) {};
+      \path (long.south -| feeling.east)+(+\sp,-\sp) node (b) {};
+      \path[rounded corners, draw=boundbox, solid]
+      (a) rectangle (b);
+
+
+      \pgfmathsetmacro{\sp}{0.05}
+      \path (dry.west |- dry.north)+(-\sp,\sp+.02) node (a) {};
+      \path (dry.south -| dry.east)+(+\sp,-\sp+.12) node (b) {};
+      \path[rounded corners, draw=dashbox, dashed]
+      (a) rectangle (b);
+
+      \pgfmathsetmacro{\sp}{0.05}
+      \path (long.west |- long.north)+(-\sp,\sp-.03) node (a) {};
+      \path (hood.south -| hood.east)+(+\sp,-\sp+.1) node (b) {};
+      \path[rounded corners, draw=dashbox, dashed]
+      (a) rectangle (b);
+    \end{pgfonlayer}
+
+    % Photo part
+    \node [align=left, below = 3.5em of suit, text width=26em] (photo)
+    {\textcolor{grayedcaption}{Photo/video~}$\square$~GoPro~\hrulefill};
+    \begin{pgfonlayer}{background}
+      % Compute a few helper coordinates
+      \pgfmathsetmacro{\sp}{0.15}
+      \path (photo.west |- photo.north)+(-\sp,\sp) node (a) {};
+      \path (photo.south -| photo.east)+(+\sp,-\sp) node (b) {};
       \path[rounded corners, draw=boundbox, solid]
       (a) rectangle (b);
     \end{pgfonlayer}
   \end{tikzpicture}
-
-  \noindent
-  \\\vspace{2em}
+  \\\vspace{3em}
   \hfill
   \begin{minipage}{0.89\linewidth}
-    \phantom{}\hrulefill\\
-    \phantom{}\hrulefill\\
-    \phantom{}\hrulefill\\
-    \phantom{}\hrulefill\\
-    \phantom{}\hrulefill\\
-    \phantom{}\hrulefill\\
-    \phantom{}\hrulefill\\
-    \phantom{}\hrulefill\\
+    \hfill\\
+    \phantom{}\rule{.98\textwidth}{0.5pt}\\
+    \phantom{}\rule{.98\textwidth}{0.5pt}\\
+    \phantom{}\rule{.98\textwidth}{0.5pt}\\
+    \phantom{}\rule{.98\textwidth}{0.5pt}\\
+    \phantom{}\rule{.98\textwidth}{0.5pt}\\
   \end{minipage}
 
   \backgroundsetup{
