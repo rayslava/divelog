@@ -271,12 +271,12 @@
 
       \pgfmathsetmacro{\sp}{0.05}
       \path (dry.west |- dry.north)+(-\sp,\sp+.02) node (a) {};
-      \path (dry.south -| dry.east)+(+\sp,-\sp+.12) node (b) {};
+      \path (dry.south -| dry.east)+(+\sp,-\sp+.10) node (b) {};
       \path[rounded corners, draw=dashbox, dashed]
       (a) rectangle (b);
 
       \pgfmathsetmacro{\sp}{0.05}
-      \path (long.west |- long.north)+(-\sp,\sp-.03) node (a) {};
+      \path (long.west |- long.north)+(-\sp,\sp-.1) node (a) {};
       \path (hood.south -| hood.east)+(+\sp,-\sp+.1) node (b) {};
       \path[rounded corners, draw=dashbox, dashed]
       (a) rectangle (b);
@@ -284,7 +284,7 @@
 
     % Photo part
     \node [align=left, below = 3.5em of suit, text width=26em] (photo)
-    {\textcolor{grayedcaption}{Photo/video~}$\square$~GoPro~\hrulefill};
+    {\textcolor{grayedcaption}{Camera~}$\square$~GoPro~\hrulefill};
     \begin{pgfonlayer}{background}
       % Compute a few helper coordinates
       \pgfmathsetmacro{\sp}{0.15}
@@ -293,24 +293,16 @@
       \path[rounded corners, draw=boundbox, solid]
       (a) rectangle (b);
     \end{pgfonlayer}
+
+    \draw[step=5mm,dashbox,dashed,thin,xshift=-3.75em,yshift=-19.5cm] (0, 0) grid (27.63em, 15.95em);
   \end{tikzpicture}
-  \\\vspace{3em}
-  \hfill
-  \begin{minipage}{0.89\linewidth}
-    \hfill\\
-    \phantom{}\rule{.98\textwidth}{0.5pt}\\
-    \phantom{}\rule{.98\textwidth}{0.5pt}\\
-    \phantom{}\rule{.98\textwidth}{0.5pt}\\
-    \phantom{}\rule{.98\textwidth}{0.5pt}\\
-    \phantom{}\rule{.98\textwidth}{0.5pt}\\
-  \end{minipage}
 
   \backgroundsetup{
     scale=.6,
     color=black,
     opacity=.2,
     angle=270,
-    hshift=5em,
+    hshift=1em,
     vshift=-4em,
     contents={%
       \includegraphics[width=2\paperwidth,height=.85\paperheight]{World_Map_Grayscale.png}
